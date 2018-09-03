@@ -14,6 +14,13 @@ enum MotorDirection {
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
 namespace CooCoo {
+    /**
+     * Runs the motor at the given speed
+     */
+    //% block="crickit run at %speed=speedPicker \\%"
+    export function run(speed: number) {
+
+    }
     
     /**
      * 设置电机
