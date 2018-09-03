@@ -27,12 +27,13 @@ namespace CooCoo {
             rota = 0x1;
         }
         if(direction == MotorDirection.left){
-            pins.analogWritePin(AnalogPin.P1, speed);
-            pins.digitalWritePin(DigitalPin.P8, rota);
-        }
-        if(direction == MotorDirection.right){
             pins.analogWritePin(AnalogPin.P15, speed);
             pins.digitalWritePin(DigitalPin.P12, rota);
+           
+        }
+        if(direction == MotorDirection.right){
+            pins.analogWritePin(AnalogPin.P1, speed);
+            pins.digitalWritePin(DigitalPin.P8, rota);
         }
     }
 
@@ -44,12 +45,12 @@ namespace CooCoo {
     //% weight=99
     export function motorStop(direction: MotorDirection): void {
         if(direction == MotorDirection.left){
-            pins.analogWritePin(AnalogPin.P1, 0);
-            pins.digitalWritePin(DigitalPin.P8, 0);
-        }
-        if(direction == MotorDirection.right){
             pins.analogWritePin(AnalogPin.P15, 0);
             pins.digitalWritePin(DigitalPin.P12, 0);
+        }
+        if(direction == MotorDirection.right){
+            pins.analogWritePin(AnalogPin.P1, 0);
+            pins.digitalWritePin(DigitalPin.P8, 0);
         }
     }
 
@@ -60,10 +61,10 @@ namespace CooCoo {
     //% weight=10
     //% blockId="coocoo_stopAll" block="停止所有电机"
     export function motorStopAll(): void {
-        //左电机
+        //右电机
         pins.analogWritePin(AnalogPin.P1, 0);
         pins.digitalWritePin(DigitalPin.P8, 0);
-        //右电机
+        //左电机
         pins.analogWritePin(AnalogPin.P15, 0);
         pins.digitalWritePin(DigitalPin.P12, 0);
     }
