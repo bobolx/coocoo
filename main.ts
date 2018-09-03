@@ -22,9 +22,9 @@ namespace CooCoo {
     //% speed.min=0 speed.max=255
     //% weight=108
     export function motorRun(direction: MotorDirection, rotation: MotorRotation, speed: number): void {
-        let rota = 1;
+        let rota = 0x0;
         if(rotation == MotorRotation.fan){
-            rota = 0;
+            rota = 0x1;
         }
         if(direction == MotorDirection.left){
             pins.analogWritePin(AnalogPin.P1, speed);
