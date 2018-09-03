@@ -1,0 +1,13 @@
+{
+    "name": "CooCoo",
+    "dependencies": {
+        "core": "*"
+    },
+    "description": "奥松CooCoo智能编程机器人",
+    "icon": "./coocoo.jpg",
+    "license": "MIT",
+    "files": [
+        "main.ts"
+    ],
+    "public": true
+}
