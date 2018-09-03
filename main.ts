@@ -18,7 +18,7 @@ namespace CooCoo {
     /**
      * 设置电机
      */
-    //% blockId="coocoo_motor" block="点击 %direction|方向 %rotation|速度 %speed"
+    //% blockId="coocoo_motor" block="电机 %direction|方向 %rotation|速度 %speed"
     //% speed.min=0 speed.max=255
     //% weight=108
     export function motorRun(direction: MotorDirection, rotation: MotorRotation, speed: number): void {
