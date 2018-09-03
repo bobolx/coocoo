@@ -18,23 +18,27 @@ namespace CooCoo {
     /**
      * 设置电机
      */
-    //% blockId="coocoo_motor" block="电机 %direction|方向 %rotation|速度 %speed"
-    //% speed.min=0 speed.max=1023
+    //% blockId="coocoo_motor" block="电机 左侧 速度%leftSpeed=speedPicker| 右侧 速度%rightSpeed=speedPicker"
     //% weight=100
-    export function motorRun(direction: MotorDirection, rotation: MotorRotation, speed: number): void {
-        let rota = 0x0;
-        if(rotation == MotorRotation.fan){
-            rota = 0x1;
+    export function motorRun(leftSpeed: number, rightSpeed: number): void {
+        let leftRotation = 0x0;
+        if(leftSpeed < 0){
+            leftRotation = 0x1;
         }
-        if(direction == MotorDirection.left){
-            pins.analogWritePin(AnalogPin.P15, speed);
-            pins.digitalWritePin(DigitalPin.P12, rota);
-           
+
+        let rightRotation = 0x0;
+        if(rightRotation < 0){
+            rightRotation = 0x1;
         }
-        if(direction == MotorDirection.right){
-            pins.analogWritePin(AnalogPin.P1, speed);
-            pins.digitalWritePin(DigitalPin.P8, rota);
-        }
+
+       //左电机
+        pins.analogWritePin(AnalogPin.P15, Math.abs(leftSpeed));
+        pins.digitalWritePin(DigitalPin.P12, leftRotation);
+        
+        //右电机
+        pins.analogWritePin(AnalogPin.P1, Math.abs(rightSpeed));
+        pins.digitalWritePin(DigitalPin.P8, rightRotation);
+        
     }
 
 
