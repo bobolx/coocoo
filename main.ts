@@ -44,13 +44,13 @@ enum BeatList {
 
 enum Patrol{
     //% block="□□"
-    white_white,
+    white_white = 1,
     //% block="□■"
-    white_black,
+    white_black = 2,
     //% block="■□"
-    black_white,
+    black_white = 3,
     //% block="■■"
-    black_black,
+    black_black = 4,
 }
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
@@ -152,14 +152,14 @@ namespace CooCoo {
     }
 
     //% weight=79
-    //% blockId=coocoo_patrol block="巡线模块 %patrol"
+    //% blockId=coocoo_patrol block="巡线 %patrol"
     export function readPatrol(patrol:Patrol):boolean{
 
         let p1 = pins.digitalReadPin(DigitalPin.P13);
         let p2 = pins.digitalReadPin(DigitalPin.P14);
 
         if(patrol == Patrol.white_white){
-            if(!p1 && !p2){
+            if(p1 == 0 && p2 == 0){
                 return true;
             }else{
                 return false;
@@ -167,7 +167,7 @@ namespace CooCoo {
         }
 
         if(patrol == Patrol.white_black){
-            if(!p1 && p2){
+            if(p1 == 0 && p2 == 1){
                 return true;
             }else{
                 return false;
@@ -175,7 +175,7 @@ namespace CooCoo {
         }
 
         if(patrol == Patrol.black_white){
-            if(p1 && !p2){
+            if(p1 == 1 && p2 == 0){
                 return true;
             }else{
                 return false;
@@ -183,7 +183,7 @@ namespace CooCoo {
         }
 
         if(patrol == Patrol.black_black){
-            if(p1 && p2){
+            if(p1 == 1 && p2 == 1){
                 return true;
             }else{
                 return false;
