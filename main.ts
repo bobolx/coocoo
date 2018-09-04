@@ -35,6 +35,13 @@ enum BeatList {
     DOUBLE = 800
 }
 
+enum Patrol{
+    //% block="左侧"
+    PatrolLeft=13,
+    //% block="右侧"
+    PatrolRight=14
+}
+
 //% weight=70 icon="\uf0e7" color=#1B80C4
 namespace CooCoo {
     /**
@@ -86,7 +93,7 @@ namespace CooCoo {
     /**
      * 停止所有电机
      */
-    //% weight=10
+    //% weight=98
     //% blockId="coocoo_stopAll" block="停止所有电机"
     export function motorStopAll(): void {
         //右电机
@@ -100,8 +107,8 @@ namespace CooCoo {
     /**
      * 设置蜂鸣器
      */
-    //% weight=10
-    //% blockId="coocoo_buzz" block="play 音符 %tone| 节拍 %beat"
+    //% weight=89
+    //% blockId="coocoo_buzz" block="播放音符 %tone| 节拍 %beat"
     export function buzz(tone: ToneHzTable, beat: BeatList): void {
 
         let buf = pins.createBuffer(4);
@@ -133,6 +140,36 @@ namespace CooCoo {
         //pins.i2cWriteBuffer(0x02, buf);
     }
 
+    //% weight=79
+    //% blockId=coocoo_Patrol block="巡线传感器 %patrol"
+    export function readPatrol(patrol:Patrol):number{
+        if(patrol==Patrol.PatrolLeft){
+            return pins.digitalReadPin(DigitalPin.P13)
+        }else if(patrol==Patrol.PatrolRight){
+            return pins.digitalReadPin(DigitalPin.P14)
+        }else{
+            return -1
+        } 
+    }
+
+    //% blockId=coocoo_sensor block=" 障碍物距离 cm"
+    //% weight=69
+    export function sensor(maxCmDistance = 500): number {
+        // send pulse
+        // pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
+        // pins.digitalWritePin(DigitalPin.P2, 0);
+        // control.waitMicros(2);
+        // pins.digitalWritePin(DigitalPin.P2, 1);
+        // control.waitMicros(10);
+        // pins.digitalWritePin(DigitalPin.P2, 0);  
+
+        // read pulse
+        let d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 42);
+        console.log("Distance: " + d/42);
+        
+        basic.pause(50)
+
+        return d / 42;
+    }
+
 }
-
-
