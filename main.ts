@@ -152,7 +152,7 @@ namespace CooCoo {
     }
 
     //% weight=79
-    //% blockId=coocoo_patrol block="巡线 %patrol"
+    //% blockId=coocoo_patrol block="巡线传感器 %patrol"
     export function readPatrol(patrol:Patrol):boolean{
 
         // let p1 = pins.digitalReadPin(DigitalPin.P13);
