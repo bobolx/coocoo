@@ -152,7 +152,7 @@ namespace CooCoo {
     }
 
     //% weight=79
-    //% blockId=coocoo_patrol block="巡线fk %patrol"
+    //% blockId=coocoo_patrol block="巡线锤子 %patrol"
     export function readPatrol(patrol:Patrol): boolean {
 
         // let p1 = pins.digitalReadPin(DigitalPin.P13);
@@ -164,33 +164,27 @@ namespace CooCoo {
             }else{
                 return false;
             }
-        }
-
-        if(patrol == Patrol.white_black){
+        }else if(patrol == Patrol.white_black){
             if(pins.digitalReadPin(DigitalPin.P13) == 0 && pins.digitalReadPin(DigitalPin.P14) == 1){
                 return true;
             }else{
                 return false;
             }
-        }
-
-        if(patrol == Patrol.black_white){
+        }else if(patrol == Patrol.black_white){
             if(pins.digitalReadPin(DigitalPin.P13) == 1 && pins.digitalReadPin(DigitalPin.P14) == 0){
                 return true;
             }else{
                 return false;
             }
-        }
-
-        if(patrol == Patrol.black_black){
+        }else if(patrol == Patrol.black_black){
             if(pins.digitalReadPin(DigitalPin.P13) == 1 && pins.digitalReadPin(DigitalPin.P14) == 1){
                 return true;
             }else{
                 return false;
             }
+        }else{
+            return false;
         }
-
-        return false;
     }
 
     //% blockId=coocoo_sensor block=" 障碍物距离 cm"
