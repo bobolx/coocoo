@@ -50,7 +50,7 @@ enum Patrol{
     //% block="■□"
     black_white = 3,
     //% block="■■"
-    black_black = 4,
+    black_black = 4
 }
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
@@ -152,7 +152,7 @@ namespace CooCoo {
     }
 
     //% weight=79
-    //% blockId=coocoo_patrol block="巡线传感器 %patrol"
+    //% blockId=coocoo_patrol block="巡线传感 %patrol"
     export function readPatrol(patrol:Patrol):boolean{
 
         // let p1 = pins.digitalReadPin(DigitalPin.P13);
