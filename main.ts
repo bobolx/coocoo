@@ -35,11 +35,22 @@ enum BeatList {
     DOUBLE = 800
 }
 
+// enum Patrol{
+//     //% block="左侧"
+//     PatrolLeft=13,
+//     //% block="右侧"
+//     PatrolRight=14
+// }
+
 enum Patrol{
-    //% block="左侧"
-    PatrolLeft=13,
-    //% block="右侧"
-    PatrolRight=14
+    //% block="□□"
+    white_white,
+    //% block="□■"
+    white_black,
+    //% block="■□"
+    black_white,
+    //% block="■■"
+    black_black,
 }
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
@@ -141,15 +152,43 @@ namespace CooCoo {
     }
 
     //% weight=79
-    //% blockId=coocoo_Patrol block="巡线传感器 %patrol"
-    export function readPatrol(patrol:Patrol):number{
-        if(patrol==Patrol.PatrolLeft){
-            return pins.digitalReadPin(DigitalPin.P13)
-        }else if(patrol==Patrol.PatrolRight){
-            return pins.digitalReadPin(DigitalPin.P14)
-        }else{
-            return -1
-        } 
+    //% blockId=coocoo_patrol block="巡线模块 %patrol"
+    export function readPatrol(patrol:Patrol):boolean{
+
+        let p1 = pins.digitalReadPin(DigitalPin.P13);
+        let p2 = pins.digitalReadPin(DigitalPin.P14);
+
+        if(patrol == Patrol.white_white){
+            if(!p1 && !p2){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        if(patrol == Patrol.white_black){
+            if(!p1 && p2){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        if(patrol == Patrol.black_white){
+            if(p1 && !p2){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        if(patrol == Patrol.black_black){
+            if(p1 && p2){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
     //% blockId=coocoo_sensor block=" 障碍物距离 cm"
@@ -173,3 +212,5 @@ namespace CooCoo {
     }
 
 }
+
+
