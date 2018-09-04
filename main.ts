@@ -17,8 +17,9 @@ namespace CooCoo {
     /**
      * 设置电机
      */
-    //% blockId="coocoo_motor" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed"
-    //% speed.min=-1023 speed.max=1023
+    //% blockId="coocoo_motor" block="电机 左侧 速度%leftSpeed| 右侧 速度%rightSpeed"
+    //% leftSpeed.min=-1023 leftSpeed.max=1023
+    //% rightSpeed.min=-1023 rightSpeed.max=1023
     //% weight=100
     export function motorRun(leftSpeed: number, rightSpeed: number): void {
         let leftRotation = 0x0;
