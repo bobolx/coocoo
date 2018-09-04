@@ -129,7 +129,7 @@ namespace CooCoo {
 
         // pins.analogWritePin(AnalogPin.P0, 1);
 
-        pins.analogWritePin(AnalogPin.P0, buf);
+        pins.analogWritePin(AnalogPin.P0, 1023);
         //pins.i2cWriteBuffer(0x02, buf);
     }
 
