@@ -106,31 +106,31 @@ namespace CooCoo {
 
         let buf = pins.createBuffer(4);
 
-        buf[0] = tone&0xff;
-        buf[1] =  (tone>>8)&0xff;
-        buf[2] = beat&0xff;
-        buf[3] =  (beat>>8)&0xff;
+        buf[0] = 262&0xff;
+        buf[1] =  (262>>8)&0xff;
+        buf[2] = 400&0xff;
+        buf[3] =  (400>>8)&0xff;
 
-        pins.analogWritePin(AnalogPin.P0, 1);
-        pins.analogWritePin(AnalogPin.P0, 1);
-        pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 1);
+        // pins.analogWritePin(AnalogPin.P0, 1);
+        // pins.analogWritePin(AnalogPin.P0, 0);
 
-        pins.analogWritePin(AnalogPin.P0, 1);
+        // pins.analogWritePin(AnalogPin.P0, 1);
 
-        pins.analogWritePin(AnalogPin.P0, 1);
-        pins.analogWritePin(AnalogPin.P0, 0);
-        pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 1);
+        // pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 0);
 
-        pins.analogWritePin(AnalogPin.P0, 1);
-        pins.analogWritePin(AnalogPin.P0, 0);
-        pins.analogWritePin(AnalogPin.P0, 0);
-        pins.analogWritePin(AnalogPin.P0, 0);
-        pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 1);
+        // pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 0);
+        // pins.analogWritePin(AnalogPin.P0, 0);
 
-        pins.analogWritePin(AnalogPin.P0, 1);
+        // pins.analogWritePin(AnalogPin.P0, 1);
 
         //pins.analogWritePin(AnalogPin.P0, 1);
-        //pins.i2cWriteBuffer(0x02, buf);
+        pins.i2cWriteBuffer(0x02, buf);
     }
 
 }
