@@ -31,7 +31,7 @@ enum BeatList {
     HALF = 200,
     //% block="整拍"
     FULL = 400,
-    //% block="双拍""
+    //% block="双拍"
     DOUBLE = 800
 }
 
@@ -152,8 +152,8 @@ namespace CooCoo {
     }
 
     //% weight=79
-    //% blockId=coocoo_patrol block="巡线传感 %patrol"
-    export function readPatrol(patrol:Patrol):boolean{
+    //% blockId=coocoo_patrol block="巡线fk %patrol"
+    export function readPatrol(patrol:Patrol): boolean {
 
         // let p1 = pins.digitalReadPin(DigitalPin.P13);
         // let p2 = pins.digitalReadPin(DigitalPin.P14);
@@ -189,6 +189,8 @@ namespace CooCoo {
                 return false;
             }
         }
+
+        return false;
     }
 
     //% blockId=coocoo_sensor block=" 障碍物距离 cm"
