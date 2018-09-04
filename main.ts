@@ -155,11 +155,11 @@ namespace CooCoo {
     //% blockId=coocoo_patrol block="巡线 %patrol"
     export function readPatrol(patrol:Patrol):boolean{
 
-        let p1 = pins.digitalReadPin(DigitalPin.P13);
-        let p2 = pins.digitalReadPin(DigitalPin.P14);
+        // let p1 = pins.digitalReadPin(DigitalPin.P13);
+        // let p2 = pins.digitalReadPin(DigitalPin.P14);
 
         if(patrol == Patrol.white_white){
-            if(p1 == 0 && p2 == 0){
+            if(pins.digitalReadPin(DigitalPin.P13) == 0 && pins.digitalReadPin(DigitalPin.P14) == 0){
                 return true;
             }else{
                 return false;
@@ -167,7 +167,7 @@ namespace CooCoo {
         }
 
         if(patrol == Patrol.white_black){
-            if(p1 == 0 && p2 == 1){
+            if(pins.digitalReadPin(DigitalPin.P13) == 0 && pins.digitalReadPin(DigitalPin.P14) == 1){
                 return true;
             }else{
                 return false;
@@ -175,7 +175,7 @@ namespace CooCoo {
         }
 
         if(patrol == Patrol.black_white){
-            if(p1 == 1 && p2 == 0){
+            if(pins.digitalReadPin(DigitalPin.P13) == 1 && pins.digitalReadPin(DigitalPin.P14) == 0){
                 return true;
             }else{
                 return false;
@@ -183,7 +183,7 @@ namespace CooCoo {
         }
 
         if(patrol == Patrol.black_black){
-            if(p1 == 1 && p2 == 1){
+            if(pins.digitalReadPin(DigitalPin.P13) == 1 && pins.digitalReadPin(DigitalPin.P14) == 1){
                 return true;
             }else{
                 return false;
