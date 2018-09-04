@@ -12,12 +12,35 @@ enum MotorDirection {
     right
 }
 
+enum ToneHzTable {
+    do = 262,
+    re = 294,
+    mi = 330,
+    fa = 349,
+    sol = 392,
+    la = 440,
+    si = 494
+}
+
+enum BeatList {
+    //% block="八分之一"
+    EIGHTH = 50,
+    //% block="四分之一"
+    QUARTER = 100,
+    //% block="二分之一"
+    HALF = 200,
+    //% block="整拍"
+    FULL = 400,
+    //% block="双拍""
+    DOUBLE = 800
+}
+
 //% weight=70 icon="\uf0e7" color=#1B80C4
 namespace CooCoo {
     /**
      * 设置电机
      */
-    //% blockId="coocoo_motor" block="电机 左侧 速度%leftSpeed| 右侧 速度%rightSpeed"
+    //% blockId="coocoo_motor" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed"
     //% leftSpeed.min=-1023 leftSpeed.max=1023
     //% rightSpeed.min=-1023 rightSpeed.max=1023
     //% weight=100
@@ -72,6 +95,24 @@ namespace CooCoo {
         //左电机
         pins.analogWritePin(AnalogPin.P15, 0);
         pins.digitalWritePin(DigitalPin.P12, 0);
+    }
+
+    /**
+     * 设置蜂鸣器
+     */
+    //% weight=10
+    //% blockId="coocoo_buzz" block="播放音符 %tone| 节拍 %beat"
+    export function buzz(tone: ToneHzTable, beat: BeatList): void {
+
+        let buf = pins.createBuffer(4);
+
+        buf[0] = tone&0xff;
+        buf[1] =  (tone>>8)&0xff;
+        buf[2] = beat&0xff;
+        buf[3] =  (beat>>8)&0xff;
+
+        //右电机
+        pins.analogWritePin(AnalogPin.P0, 262);
     }
 
 }
