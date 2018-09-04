@@ -112,7 +112,7 @@ namespace CooCoo {
         buf[3] =  (beat>>8)&0xff;
 
         //右电机
-        pins.analogWritePin(AnalogPin.P0, 262);
+        pins.analogWritePin(AnalogPin.P0, 1);
     }
 
 }
